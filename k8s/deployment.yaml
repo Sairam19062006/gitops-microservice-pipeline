@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-microservice
+  namespace: default
+  labels:
+    app: gitops-microservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gitops-microservice
+  template:
+    metadata:
+      labels:
+        app: gitops-microservice
+    spec:
+      containers:
+      - name: web
+        image: sairam19062006/gitops-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
