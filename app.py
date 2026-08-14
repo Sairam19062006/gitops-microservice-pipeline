@@ -6,7 +6,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
         self.end_headers()
-        version = os.getenv("APP_VERSION", "v1.0")
+        version = os.getenv("APP_VERSION", "v2.0")
         response = f"<h1>GitOps Pipeline Active!</h1><p>Running Version: <b>{version}</b></p>"
         self.wfile.write(response.encode('utf-8'))
 
